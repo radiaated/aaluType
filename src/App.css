@@ -7,7 +7,8 @@ body {
   font-family: "Source Code Pro", monospace;
 }
 
-.textarea {
+.textarea,
+textarea {
   width: 900px;
   height: 350px;
   max-width: 90%;
@@ -24,6 +25,10 @@ body {
   letter-spacing: 0.5px;
 }
 
+textarea {
+  opacity: 0;
+  z-index: 99;
+}
 textarea:focus {
   outline: none;
 }
