@@ -83,7 +83,13 @@ const TypeScreen = () => {
         </div>
         <div className="texts">{text}</div>
       </div>
-      <div className="textarea" ref={inputRef} spellCheck={false}>
+      <div
+        className="textarea"
+        ref={inputRef}
+        spellCheck={false}
+        contenteditable={true}
+        onChange={() => {}}
+      >
         {text.split("").map((item, ind) => {
           return (
             <span
