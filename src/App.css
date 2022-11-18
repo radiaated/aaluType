@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: rgb(19, 19, 19);
+  font-family: "Source Code Pro", monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.textarea {
+  width: 900px;
+  height: 350px;
+  max-width: 90%;
+  background-color: rgb(31, 31, 31);
+  color: rgb(184, 184, 184);
+
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.25rem;
+  padding: 0.5em;
+  letter-spacing: 0.5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+textarea:focus {
+  outline: none;
+}
+
+.test-texts {
+  margin: 0 auto;
+  position: absolute;
+  user-select: none;
+  width: 900px;
+  max-width: 90%;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -5%);
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+  height: 100px;
+}
+
+.new-texts-btn {
+  width: 5%;
+  cursor: pointer;
+}
+
+.test-texts i {
+  font-size: 1.5rem;
+  margin-right: 0.5em;
+  color: rgb(146, 130, 206);
+  transition: color 0.1s;
+}
+.test-texts i:hover {
+  color: rgb(108, 78, 231);
+}
+
+.texts {
   color: white;
+
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.correct {
+  color: rgb(240, 240, 240);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.type-bar {
+  box-shadow: -2px 0px 0px rgb(202, 202, 202);
+  animation: type-bar-animation 0.5s infinite alternate;
+}
+
+@keyframes type-bar-animation {
+  0% {
+    box-shadow: -2px 0px 0px transparent;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    box-shadow: -2px 0px 0px rgb(202, 202, 202);
   }
+}
+
+.result {
+  width: 900px;
+  max-width: 90%;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 8%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  font-size: 1.5rem;
+}
+
+.result i {
+  vertical-align: middle;
+  font-size: 2rem;
+}
+
+.tick-tock {
+  animation: ticktock 1s infinite alternate;
+}
+
+@keyframes ticktock {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.after-result {
+  width: 900px;
+  max-width: 90%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2em;
+}
+
+.after-results {
+  border-radius: 5px;
+  background-color: blueviolet;
+}
+
+.after-results h5 {
+  padding: 0.2em;
+  background-color: rgb(95, 30, 155);
+}
+
+.after-result div {
+  width: 32%;
 }
