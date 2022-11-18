@@ -48,8 +48,8 @@ const TypeScreen = () => {
     }
   };
 
-  const [text, setText] = useState("Hello");
-  // const [text, setText] = useState(textsList[randomNumberGen()]);
+  // const [text, setText] = useState("Hello");
+  const [text, setText] = useState(textsList[randomNumberGen()]);
 
   useEffect(() => {
     if (userInput.split("").length === text.split("").length) {
