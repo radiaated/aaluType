@@ -70,6 +70,7 @@ const TypeScreen = () => {
           <i
             onClick={() => {
               setText(textsList[randomNumberGen()]);
+              setInPlay(false);
               setUserInput("");
               setInputPos(-1);
               setRight([]);
