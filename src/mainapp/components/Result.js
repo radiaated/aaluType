@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Result = ({ data }) => {
   const [timerValue, setTimerValue] = useState(0);
-  const [showResult, setShowResult] = useState(false);
-  const [wpm, setWPM] = useState(0);
-  const [acc, setAcc] = useState(0);
+  const [showResult, setShowResult] = useState(null);
 
   const wpmCalc = () => {
     let correctWords = 0;
@@ -12,11 +10,13 @@ const Result = ({ data }) => {
       correctWords = data.text.split(" ").includes(item) ? correctWords + 1 : 0;
     });
 
-    setWPM((correctWords / (timerValue === 0 ? 1 : timerValue)) * 60);
-    setAcc(
-      ((data.text.split("").length - data.inc) / data.text.split("").length) *
-        100
-    );
+    setShowResult({
+      wpm: (correctWords / (timerValue === 0 ? 1 : timerValue)) * 60,
+      acc:
+        ((data.text.split("").length - data.inc) / data.text.split("").length) *
+        100,
+      resultTime: timerValue,
+    });
     if (localStorage.getItem("typTest")) {
       if (
         JSON.parse(localStorage.getItem("typTest")).pb <
@@ -37,8 +37,6 @@ const Result = ({ data }) => {
         })
       );
     }
-
-    setShowResult(true);
   };
 
   useEffect(() => {
@@ -52,6 +50,7 @@ const Result = ({ data }) => {
       };
     } else {
       wpmCalc();
+      setShowResult(null);
     }
   }, [data.inPlay, timerValue]);
 
@@ -91,21 +90,31 @@ const Result = ({ data }) => {
                 <ion-icon name="stopwatch-outline"></ion-icon>
               </i>
               {`${
-                Math.floor(timerValue / 60) < 10
-                  ? `0${Math.floor(timerValue / 60)}`
-                  : `${Math.floor(timerValue / 60)}`
+                Math.floor(showResult.resultTime / 60) < 10
+                  ? `0${Math.floor(showResult.resultTime / 60)}`
+                  : `${Math.floor(showResult.resultTime / 60)}`
               }:${
-                timerValue - Math.floor(timerValue / 60) * 60 < 10
-                  ? `0${timerValue - Math.floor(timerValue / 60) * 60}`
-                  : `${timerValue - Math.floor(timerValue / 60) * 60}`
+                showResult.resultTime -
+                  Math.floor(showResult.resultTime / 60) * 60 <
+                10
+                  ? `0${
+                      showResult.resultTime -
+                      Math.floor(showResult.resultTime / 60) * 60
+                    }`
+                  : `${
+                      showResult.resultTime -
+                      Math.floor(showResult.resultTime / 60) * 60
+                    }`
               }`}
             </div>
-            <div className="wpm-result">WPM: {parseInt(wpm)}</div>
-            <div className="acc-result">Accuracy: {parseInt(acc)}%</div>
+            <div className="wpm-result">WPM: {parseInt(showResult.wpm)}</div>
+            <div className="acc-result">
+              Accuracy: {parseInt(showResult.acc)}%
+            </div>
           </div>
         </div>
       ) : (
-        ""
+        showResult && `Last Result: WPM:${showResult.wpm}`
       )}
     </div>
   );

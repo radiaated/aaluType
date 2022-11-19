@@ -76,6 +76,7 @@ const TypeScreen = () => {
               setRight([]);
               setWrong([]);
               setInc(0);
+              setPlayStart(false);
             }}
           >
             <ion-icon name="refresh-outline"></ion-icon>
