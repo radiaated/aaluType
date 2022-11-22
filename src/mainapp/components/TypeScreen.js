@@ -17,6 +17,50 @@ const TypeScreen = () => {
   const [right, setRight] = useState([]);
   const [inputPos, setInputPos] = useState(-1);
   const [inc, setInc] = useState(0);
+  const keyNames = [
+    "Backspace",
+    "Tab",
+    "Enter",
+    "Shift",
+    "Control",
+    "Alt",
+    "Pause",
+    "CapsLock",
+    "Escape",
+    "PageUp",
+    "PageDown",
+    "End",
+    "Home",
+    "ArrowLeft",
+    "ArrowUp",
+    "ArrowRight",
+    "ArrowDown",
+    "PrintScreen",
+    "Insert",
+    "Delete",
+    "Meta",
+    "ContextMenu",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "NumLock",
+    "ScrollLock",
+    "AudioVolumeMute",
+    "AudioVolumeDown",
+    "AudioVolumeUp",
+    "LaunchMediaPlayer",
+    "LaunchApplication1",
+    "LaunchApplication2",
+  ];
 
   // const textsList = [
   //   `That's all the note said. There was no indication from where it came or who may have written it. Had it been meant for someone else? Meghan looked around the room, but nobody made eye contact back. For a brief moment, she thought it might be a message for her to follow her dreams, but ultimately decided it was easier to ignore it as she crumpled it up and threw it away.`,
@@ -31,12 +75,6 @@ const TypeScreen = () => {
   };
 
   const typer = (e) => {
-    if (!inPlay) {
-      dispatch(appAction.setInPlay(true));
-    }
-    if (!playStart) {
-      dispatch(appAction.setPlayStart(true));
-    }
     if (e.key === "Backspace") {
       if (inputPos > -1) {
         setRight(right.filter((item) => item !== inputPos));
@@ -45,7 +83,13 @@ const TypeScreen = () => {
         setUserInput(userInput.slice(0, -1));
       }
     } else {
-      if (e.key !== "Shift") {
+      if (!keyNames.includes(e.key)) {
+        if (!inPlay) {
+          dispatch(appAction.setInPlay(true));
+        }
+        if (!playStart) {
+          dispatch(appAction.setPlayStart(true));
+        }
         if (text.split("")[inputPos + 1] === e.key) {
           setRight([...right, inputPos + 1]);
         } else if (text.split("")[inputPos + 1] !== e.key) {
@@ -71,7 +115,7 @@ const TypeScreen = () => {
     return () => {
       window.removeEventListener("keydown", typer);
     };
-  }, [inputPos]);
+  }, [inputPos, text]);
 
   return (
     <>

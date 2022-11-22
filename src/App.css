@@ -19,24 +19,24 @@ body {
   background-repeat: no-repeat;
   position: relative;
   background-attachment: fixed;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   height: 100vh;
   user-select: none;
 }
 
-body::-webkit-scrollbar {
-  width: 4px; /* width of the entire scrollbar */
+/* body::-webkit-scrollbar {
+  width: 4px;
 }
 
 body::-webkit-scrollbar-track {
-  background: rgb(58, 38, 2); /* color of the tracking area */
+  background: rgb(58, 38, 2);
 }
 
 body::-webkit-scrollbar-thumb {
   width: 2px;
-  background-color: rgb(107, 80, 30); /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-}
+  background-color: rgb(107, 80, 30);
+  border-radius: 20px;
+} */
 
 .flex-box {
   display: flex;
@@ -155,10 +155,10 @@ textarea {
 
 @keyframes type-bar-animation {
   0% {
-    box-shadow: -2px 0px 0px transparent;
+    box-shadow: -2px 0px 0px rgb(202, 202, 202);
   }
   100% {
-    box-shadow: -2px 0px 0px rgb(202, 202, 202);
+    box-shadow: -2px 0px 0px transparent;
   }
 }
 
@@ -193,7 +193,7 @@ textarea {
 }
 
 .restart-btn:active .restart-icon {
-  animation: restartactive 0.2s forwards ease-in-out;
+  animation: restartactive 0.3s forwards ease-in-out;
 }
 
 @keyframes restarthover {

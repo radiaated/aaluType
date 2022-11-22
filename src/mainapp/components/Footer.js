@@ -12,6 +12,7 @@ const Footer = () => {
         <a
           href="https://github.com/SumanBeRadiated/aaluType"
           className="footer-link"
+          target="_blank"
         >
           <ion-icon name="logo-github"></ion-icon> Github
         </a>
