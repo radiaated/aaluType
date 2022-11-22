@@ -36,7 +36,10 @@ export const appSlice = createSlice({
 
       state.result = {
         wpm: wpm,
-        acc: ((text.split("").length - inc) / text.split("").length) * 100,
+        acc:
+          correctWords === 0
+            ? 0
+            : ((text.split("").length - inc) / text.split("").length) * 100,
         resultTime: state.timerValue,
       };
 
