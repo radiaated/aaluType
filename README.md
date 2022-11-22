@@ -1,3 +1,14 @@
+# A simple typing test React.js Application.
+
+Demo:
+https://aalutype.vercel.app/
+
+This application calculates word per minute (WPM) and the accuracy. It serves the users with different paragraphs to test.
+The application uses simple calculations to computer the output like WPM so it may not give the correct result in terms of precision and efficiency.
+
+## _Free to clone, use and suggest._
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
