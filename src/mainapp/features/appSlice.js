@@ -24,16 +24,12 @@ export const appSlice = createSlice({
     setResult: (state, action) => {
       const { text, userInput, inc } = action.payload;
       let correctWords = 0;
-      console.log(userInput, text);
 
       for (let item of userInput.split(" ")) {
         if (text.split(" ").includes(item)) {
           correctWords++;
         }
       }
-
-      console.log(correctWords);
-      console.log(state.timerValue);
 
       const wpm =
         (correctWords / (state.timerValue === 0 ? 1 : state.timerValue)) * 60;
